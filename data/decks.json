@@ -1,0 +1,50 @@
+{
+  "decks": [
+    {
+      "id": "biology-101",
+      "name": "Biology 101",
+      "sections": [
+        {
+          "id": "cell-biology",
+          "name": "Cell Biology",
+          "cards": [
+            { "id": "c1", "front": "What is the powerhouse of the cell?", "back": "The mitochondrion — it generates ATP through cellular respiration." },
+            { "id": "c2", "front": "What does the cell membrane do?", "back": "Controls what enters and exits the cell; selectively permeable." },
+            { "id": "c3", "front": "What is the function of ribosomes?", "back": "They synthesize proteins by translating mRNA." }
+          ]
+        },
+        {
+          "id": "genetics",
+          "name": "Genetics",
+          "cards": [
+            { "id": "c4", "front": "What is a genotype?", "back": "The genetic makeup of an organism — its actual allele combination." },
+            { "id": "c5", "front": "What is a phenotype?", "back": "The observable physical or biochemical characteristics of an organism." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spanish-vocab",
+      "name": "Spanish Vocabulary",
+      "sections": [
+        {
+          "id": "food",
+          "name": "Food",
+          "cards": [
+            { "id": "c6", "front": "el pan", "back": "bread" },
+            { "id": "c7", "front": "la manzana", "back": "apple" },
+            { "id": "c8", "front": "el agua", "back": "water" }
+          ]
+        },
+        {
+          "id": "travel",
+          "name": "Travel",
+          "cards": [
+            { "id": "c9", "front": "el aeropuerto", "back": "airport" },
+            { "id": "c10", "front": "la maleta", "back": "suitcase" }
+          ]
+        }
+      ]
+    }
+  ]
+}

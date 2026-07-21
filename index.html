@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Study Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <h1>Study Desk</h1>
+      <div class="tag">flashcards</div>
+    </div>
+    <nav><a href="admin.html">edit deck →</a></nav>
+  </header>
+
+  <!-- Step 1: deck picker -->
+  <section class="panel" id="deckPanel">
+    <h2>Deck</h2>
+    <div class="chip-row" id="deckChips"></div>
+  </section>
+
+  <!-- Step 2: section picker -->
+  <section class="panel" id="sectionPanel" hidden>
+    <h2>Sections</h2>
+    <div class="chip-row" id="sectionChips"></div>
+  </section>
+
+  <!-- Step 3: card selection -->
+  <section class="panel" id="cardPanel" hidden>
+    <h2>Cards <span id="cardCount" style="color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0;"></span></h2>
+    <div class="card-list" id="cardList"></div>
+    <div class="list-actions">
+      <button id="selectAll">select all</button>
+      <button id="selectNone">select none</button>
+    </div>
+    <div class="controls-row">
+      <label class="toggle"><input type="checkbox" id="shuffleToggle" checked> shuffle</label>
+      <button class="btn" id="startBtn" disabled>Study selected cards</button>
+    </div>
+  </section>
+
+  <!-- Step 4: study stage -->
+  <section id="studySection" hidden>
+    <div class="study-stage">
+      <div class="progress" id="progressLabel"></div>
+      <div class="card-scene">
+        <div class="flashcard" id="flashcard">
+          <div class="face front"><div class="content" id="frontText"></div></div>
+          <div class="face back"><div class="content" id="backText"></div></div>
+        </div>
+      </div>
+      <div class="hint">tap card to flip</div>
+      <div class="nav-row">
+        <button class="icon-btn" id="prevBtn" aria-label="previous card">‹</button>
+        <button class="btn secondary" id="reshuffleBtn">Reshuffle</button>
+        <button class="icon-btn" id="nextBtn" aria-label="next card">›</button>
+      </div>
+      <div class="controls-row" style="margin-top:20px;">
+        <button class="btn secondary" id="backToSelectionBtn">← change selection</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="empty-state" id="emptyState" hidden>No decks found. Add one from the edit page.</div>
+
+  <footer class="foot">github pages · data/decks.json</footer>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

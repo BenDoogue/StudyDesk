@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Study Desk — Edit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <h1>Study Desk</h1>
+      <div class="tag">editing decks.json</div>
+    </div>
+    <nav><a href="index.html">← back to study</a></nav>
+  </header>
+
+  <!-- Token gate -->
+  <section class="gate" id="gate">
+    <h2 style="font-family:var(--font-display); font-weight:normal;">Unlock editing</h2>
+    <p>
+      Paste a GitHub personal access token with write access to this repo.
+      It's kept only in this browser tab (never saved to disk or committed)
+      and is used to save changes straight back to <code>data/decks.json</code>.
+    </p>
+    <div class="field">
+      <label for="repoInput">Repo (owner/name)</label>
+      <input type="text" id="repoInput" placeholder="yourname/study-desk">
+    </div>
+    <div class="field">
+      <label for="branchInput">Branch</label>
+      <input type="text" id="branchInput" value="main">
+    </div>
+    <div class="field">
+      <label for="tokenInput">Personal access token</label>
+      <input type="password" id="tokenInput" placeholder="github_pat_...">
+    </div>
+    <button class="btn" id="unlockBtn">Load deck data</button>
+    <div class="status-msg" id="gateStatus"></div>
+  </section>
+
+  <!-- Editor -->
+  <div id="editor" hidden>
+    <div class="admin-grid">
+      <div class="panel">
+        <h2>Decks</h2>
+        <div class="tree" id="tree"></div>
+        <div class="list-actions" style="margin-top:14px;">
+          <button id="addDeckBtn">+ add deck</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 id="editorTitle">Select a section</h2>
+        <div id="sectionEditor"></div>
+      </div>
+    </div>
+
+    <div class="controls-row" style="margin-top:20px;">
+      <button class="btn" id="saveBtn">Save to GitHub</button>
+      <div class="status-msg" id="saveStatus"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
