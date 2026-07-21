@@ -9,14 +9,21 @@
           "name": "Week 1",
           "cards": [
             { "id": "p1.1", "front": "What is perception?", "back": "The process by which the world gets into our minds" },
-            { "id": "p1.2", "front": "What is a good way to study perception?", "back": "A good way to study it is by studying how it breaks" },
-            { "id": "p1.3", "front": "Why focus on vision", "back": "Vision sits at the top of the sensory hierarchy" },
-            { "id": "p1.4", "front": "What is the inverse problem?", "back": "That we only have sensory of activation that we have to work backwards from to construct reality" },
-            { "id": "p1.5", "front": "What is perception as a constructive act and its two big components?", "back": "That perception constructs reality, comps: sensory and top-down." },
-            { "id": "p1.6", "front": "Why do we need top down processing?", "back": "It helps disambiguate sensory input" },
-            { "id": "p1.7", "front": "What are Illusory contours?", "back": "The experience of lines that do not actually exist" },
-            { "id": "p1.8", "front": "What is cognitive impenetrability?", "back": "The idea that perception cannot be influenced by conscious knowledge" }
-
+            { "id": "p1.2", "front": "What is a good way to study perception?", "back": "By studying how it breaks" },
+            { "id": "p1.3", "front": "Why study perception?", "back": "Perception is the basis of most thoughts, feelings and actions**" },
+            { "id": "p1.4", "front": "Why focus on vision?", "back": "Vision sits at the top of the sensory hierarchy - a huge proportion of the brain is involved in vision (far more than the other senses)**" },
+            { "id": "p1.5", "front": "What is the inverse problem?", "back": "That we only have sensory stimulation that we have to work backwards from to construct reality - sensory activation can be ambiguous**" },
+            { "id": "p1.6", "front": "What is perception as a constructive act and its two big components?", "back": "That perception constructs reality by making unconscious inferences about the world, Components =  sensory and top-down.**" },
+            { "id": "p1.7", "front": "Why do we need top down processing?", "back": "It helps disambiguate sensory input." },
+            { "id": "p1.8", "front": "What are Illusory contours?", "back": "Perceptual boundaries or edges that aren't physically there **" },
+            { "id": "p1.9", "front": "What is cognitive impenetrability?", "back": "The idea that perception cannot be influenced by conscious knowledge" },
+            { "id": "p1.10", "front": "What is unconscious inference?", "back": "The automatic process of interpreting sensory input." },
+            { "id": "p1.11", "front": "Why should we study visual illusions?", "back": "Because they reveal things about the intersection of our top down and bottom up  processing and constructive perception." },
+            { "id": "p1.12", "front": "What is the mind-brain distinction?", "back": "That the mind is what the brain does, but the mind doesn’t reduce to the brain." },
+            { "id": "p1.13", "front": "What are David Marr's three levels of analysis?", "back": "Computational, Algorithmic/representational, Implementational/Physical" },
+            { "id": "p1.14", "front": "What is the computational level of analysis?", "back": "It is the what and why. i.e. What problem is the system trying to solve, and why? - logic and environmental constraints. E.g. Arithmetic (for a cash register)" },
+            { "id": "p1.15", "front": "What is the algorithmic level of analysis?", "back": "It is the how. i.e. What representations are used and what processes manipulate them. E.g. Arabic numerals and carrying for addition (for a cash register)" },
+            { "id": "p1.16", "front": "What is the Implementational level of analysis?", "back": "It is the where/who. i.e.  How are these algorithms physically materialised. E.g. a notched wheel (for a cash register)" }
           ]
         },
         {
