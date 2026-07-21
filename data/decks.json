@@ -1,47 +1,42 @@
 {
   "decks": [
     {
-      "id": "biology-101",
-      "name": "Biology 101",
+      "id": "PSYC310",
+      "name": "PSYC",
       "sections": [
         {
-          "id": "cell-biology",
-          "name": "Cell Biology",
+          "id": "p1",
+          "name": "Week 1",
           "cards": [
-            { "id": "c1", "front": "What is the powerhouse of the cell?", "back": "The mitochondrion — it generates ATP through cellular respiration." },
-            { "id": "c2", "front": "What does the cell membrane do?", "back": "Controls what enters and exits the cell; selectively permeable." },
-            { "id": "c3", "front": "What is the function of ribosomes?", "back": "They synthesize proteins by translating mRNA." }
+            { "id": "p1.1", "front": "What is perception?", "back": "The process by which the world gets into our minds" },
+            { "id": "p1.2", "front": "What is a good way to study perception?", "back": "A good way to study it is by studying how it breaks" },
+            { "id": "p1.3", "front": "Why focus on vision", "back": "Vision sits at the top of the sensory hierarchy" },
+            { "id": "p1.4", "front": "What is the inverse problem?", "back": "That we only have sensory of activation that we have to work backwards from to construct reality" },
+            { "id": "p1.5", "front": "What is perception as a constructive act and its two big components?", "back": "That perception constructs reality, comps: sensory and top-down." },
+            { "id": "p1.6", "front": "Why do we need top down processing?", "back": "It helps disambiguate sensory input" },
+            { "id": "p1.7", "front": "What are Illusory contours?", "back": "The experience of lines that do not actually exist" },
+            { "id": "p1.8", "front": "What is cognitive impenetrability?", "back": "The idea that perception cannot be influenced by conscious knowledge" }
+
           ]
         },
         {
-          "id": "genetics",
-          "name": "Genetics",
+          "id": "p2",
+          "name": "Week 2",
           "cards": [
-            { "id": "c4", "front": "What is a genotype?", "back": "The genetic makeup of an organism — its actual allele combination." },
-            { "id": "c5", "front": "What is a phenotype?", "back": "The observable physical or biochemical characteristics of an organism." }
+           
           ]
         }
       ]
     },
     {
-      "id": "spanish-vocab",
-      "name": "Spanish Vocabulary",
+      "id": "NWEN243",
+      "name": "Clouds and Networking",
       "sections": [
         {
-          "id": "food",
-          "name": "Food",
+          "id": "blank",
+          "name": "blank",
           "cards": [
-            { "id": "c6", "front": "el pan", "back": "bread" },
-            { "id": "c7", "front": "la manzana", "back": "apple" },
-            { "id": "c8", "front": "el agua", "back": "water" }
-          ]
-        },
-        {
-          "id": "travel",
-          "name": "Travel",
-          "cards": [
-            { "id": "c9", "front": "el aeropuerto", "back": "airport" },
-            { "id": "c10", "front": "la maleta", "back": "suitcase" }
+
           ]
         }
       ]
