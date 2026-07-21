@@ -2,7 +2,7 @@
   "decks": [
     {
       "id": "PSYC310",
-      "name": "PSYC310",
+      "name": "PSYC310: Cognition",
       "sections": [
         {
           "id": "p1",
@@ -30,7 +30,7 @@
     },
     {
       "id": "NWEN243",
-      "name": "Clouds and Networking",
+      "name": "NWEN243: Clouds and Networking",
       "sections": [
         {
           "id": "blank",
