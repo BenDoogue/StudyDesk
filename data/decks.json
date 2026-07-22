@@ -6,7 +6,7 @@
       "sections": [
         {
           "id": "p1",
-          "name": "Week 1",
+          "name": "Basics/Methods",
           "cards": [
             { "id": "p1.1", "front": "What is perception?", "back": "The process by which the world gets into our minds" },
             { "id": "p1.2", "front": "What is a good way to study perception?", "back": "By studying how it breaks" },
@@ -38,7 +38,7 @@
             { "id": "p1.28", "front": "What are the two kinds of thresholds?", "back": "Absolute/detection threshold (minimum stimulus) and relative/discrimination/difference threshold (just noticeable difference)." },
             { "id": "p1.29", "front": "What is the method of adjustment and its benefits?", "back": "Participants adjust the stimulus until it is barely visible. It allows for quick threshold determination" },
             { "id": "p1.30", "front": "What is the method of limits and its benefits?", "back": "The experimenter changes the stimulus until detection success changes. It is more reliable than adjustment." },
-            { "id": "p1.31", "front": "What is the method of constant stimuli and what can it produce?", "back": "It repeats the same stimuli multiple times and tallies the percentage of detections. produces psychometric curve." },
+            { "id": "p1.31", "front": "What is the method of constant stimuli and what can it produce?", "back": "It repeats the same stimuli multiple times and tallies detections. produces psychometric curve." },
             { "id": "p1.32", "front": "What are the four outcomes of a signal detection task?", "back": "Hit, Miss, False alarm, Correct rejection" },
             { "id": "p1.33", "front": "What is response bias?", "back": "Someone's tendency to say yes or no" },
             { "id": "p1.34", "front": "What is method of forced choice?", "back": "Instead of simply detection, say when or where the stimulus appears, e.g. left or right" },
@@ -48,7 +48,7 @@
         },
         {
           "id": "p2",
-          "name": "Week 2",
+          "name": "Visual System",
           "cards": [
            
           ]
