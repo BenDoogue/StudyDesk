@@ -23,7 +23,22 @@
             { "id": "p1.13", "front": "What are David Marr's three levels of analysis?", "back": "Computational, Algorithmic/representational, Implementational/Physical" },
             { "id": "p1.14", "front": "What is the computational level of analysis?", "back": "It is the what and why. i.e. What problem is the system trying to solve, and why? - logic and environmental constraints. E.g. Arithmetic (for a cash register)" },
             { "id": "p1.15", "front": "What is the algorithmic level of analysis?", "back": "It is the how. i.e. What representations are used and what processes manipulate them. E.g. Arabic numerals and carrying for addition (for a cash register)" },
-            { "id": "p1.16", "front": "What is the Implementational level of analysis?", "back": "It is the where/who. i.e.  How are these algorithms physically materialised. E.g. a notched wheel (for a cash register)" }
+            { "id": "p1.16", "front": "What is the Implementational level of analysis?", "back": "It is the where/who. i.e.  How are these algorithms physically materialised. E.g. a notched wheel (for a cash register)" },
+            { "id": "p1.17", "front": "What level of explanation is the mind at?", "back": "The Computational" },
+            { "id": "p1.18", "front": "What level of explanation is the brain at?", "back": "Implementational" },
+            { "id": "p1.19", "front": "What are the three main approaches for cognitive neuroscience?", "back": "Pp (Psychophysics/perception), Ph1 (Stimulus-Physiology), Ph2 (Physiology-perception)" },
+            { "id": "p1.20", "front": "What is the Pp method?", "back": "Psychophysics/perception - measures the relationship between physical stimuli and the subject's behavioural response and conscious experience. E.g. reporting differences between stimuli" },
+            { "id": "p1.21", "front": "What is the Ph1 method?", "back": "Stimulus-Physiology - a direct measure of how neurons are reacting to stimuli." },
+            { "id": "p1.22", "front": "What is the Ph2 method?", "back": "Physiology-Perception - measures the relationship between brain activity and conscious experience." },
+            { "id": "p1.23", "front": "What is EEG, its function and benefits?", "back": "Electroencephalography - it measures electrical currents that occur with brain activity. High temporal resolution, low spatial resolution." },
+            { "id": "p1.24", "front": "What is fMRI, its function and benefits?", "back": "Functional Magnetic Resonance Imaging - measures the flow of blood in the brain to see what regions have been active. High spatial resolution, low temporal resolution." },
+            { "id": "p1.25", "front": "What is TMS, its function and benefits?", "back": "Transcranial Magnetic Stimulation, creates a temporary lesion by disrupting electrical signals. Allows for causal inferences." },
+            { "id": "p1.26", "front": "Why is the spontaneous firing rate useful?", "back": "It keeps neural circuits continuously primed, and it allows for inhibition to occur - an inhibited neuron will fire less frequently than its spontaneous firing rate, enabling bidirectional information." },
+            { "id": "p1.27", "front": "What is a threshold?", "back": "A measure of perceptual sensitivity." },
+            { "id": "p1.28", "front": "What are the two kinds of thresholds?", "back": "Absolute/detection threshold (minimum stimulus) and relative/discrimination/difference threshold (just noticeable difference)." },
+            { "id": "p1.29", "front": "What is the method of adjustment and its benefits?", "back": "Participants adjust the stimulus until it is barely visible. It allows for quick threshold determination, though it is not very reliable." },
+            { "id": "p1.30", "front": "What is the method of limits and its benefits?", "back": "The experimenter changes the stimulus until detection success changes. It is more reliable than adjustment." },
+            { "id": "p1.31", "front": "What is the method of constant stimuli and what can it produce?", "back": "It repeats the same stimuli multiple times and tallies the percentage of detection. It can produce an accurate psychometric curve." }
           ]
         },
         {
