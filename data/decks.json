@@ -84,6 +84,26 @@
             { "id": "p2.32", "front": "What is the third visual pathway sensitive to?", "back": "Dynamic social cues such as biological motion, eye gaze, and facial expressions" },
             { "id": "p2.33", "front": "What is the static vs dynamic dissociation?", "back": "Evidence that static and dynamic social cues are processed in different parts of the brain" }
           ]
+        },
+        {
+          "id": "p3",
+          "name": "Lightness and Colour Perception",
+          "cards": [
+            { "id": "p3.1", "front": "What is colour/lightness constancy?", "back": "The brain's ability to perceive an object's colour accurately even when lighting changes; it is based on context" },
+            { "id": "p3.2", "front": "What is the timeline of dark adaptation?", "back": "Over the first 10 minutes, cones fully adapt, then rods keep adapting at a slower rate for up to 30 minutes" },
+            { "id": "p3.3", "front": "What else affects lightness perception aside from lateral inhibition?", "back": "Belongingness and shadow inference - grouping an object onto a specific background or context" },
+            { "id": "p3.4", "front": "Why does continuity of a shape matter for lightness perception?", "back": "Because we make inferences about entire objects" },
+            { "id": "p3.5", "front": "What is monochromatic light?", "back": "One frequency at one intensity" },
+            { "id": "p3.6", "front": "What is heterochromatic light?", "back": "Light composed of multiple wavelengths" },
+            { "id": "p3.7", "front": "How can two different stimuli to a cone produce the same response?", "back": "Response is determined by photons absorbed; less at a sensitive frequency can equal more at an insensitive frequency" },
+            { "id": "p3.8", "front": "What is a metamer?", "back": "Light (or any sensory input) that are physically different but perceived as the same" },
+            { "id": "p3.9", "front": "Why are absorptive and emissive colour combinations different?", "back": "Because absorbing takes away wavelengths whereas emission adds them" },
+            { "id": "p3.10", "front": "What is trichromacy?", "back": "How the retina detects colour - with three cones making up all visible colours" },
+            { "id": "p3.11", "front": "What is opponency / colour cancellation?", "back": "Red-green channels either produce red or green or detect brightness; the same applies to blue and yellow" },
+            { "id": "p3.12", "front": "What are colourblind people missing?", "back": "A cone or two" },
+            { "id": "p3.13", "front": "What are monochromes?", "back": "People with only 1 cone" },
+            { "id": "p3.14", "front": "What is achromatopsia?", "back": "Where cones work normally but the subject still cannot experience colour" }
+          ]
         }
       ]
     },
