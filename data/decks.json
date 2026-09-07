@@ -110,13 +110,10 @@
           "name": "Perception, Awareness & Predictive Processing",
           "cards": [
             { "id": "c1.1", "front": "What is the difference between perception and perceptual awareness?", "back": "Perception is the neural process; perceptual awareness is the subjective experience" },
-            { "id": "c1.2", "front": "What is perceptual awareness?", "back": "The subjective experience of a percept" },
             { "id": "c1.3", "front": "What is an illusion?", "back": "A subjective experience that differs from the physical stimulus" },
-            { "id": "c1.4", "front": "Is perception a thing or a process?", "back": "A process, not a thing" },
             { "id": "c1.5", "front": "What is motion-induced blindness?", "back": "A stationary stimulus disappears when surrounded by a global moving pattern" },
-            { "id": "c1.6", "front": "Why might motion-induced blindness occur?", "back": "The brain ignores things unlikely to actually be in the world" },
-            { "id": "c1.7", "front": "What is a bistable image?", "back": "An ambiguous image with two valid interpretations, one perceived at a time" },
-            { "id": "c1.8", "front": "What is the Necker cube?", "back": "A bistable wireframe cube that flips between two orientations" },
+            { "id": "c1.6", "front": "Why might motion-induced blindness occur?", "back": "Adaptation and prioritizing motion" },
+            { "id": "c1.7", "front": "What is a bistable image?", "back": "An ambiguous image with two interpretations, one perceived at a time" },
             { "id": "c1.9", "front": "What is pareidolia?", "back": "Seeing meaningful shapes (e.g. faces) in an unambiguous stimulus" },
             { "id": "c1.10", "front": "What is a Neural Correlate of Consciousness (NCC)?", "back": "A neural activity pattern that reliably corresponds to a specific percept" },
             { "id": "c1.11", "front": "What is binocular rivalry?", "back": "Alternating dominance when each eye sees a different image" },
@@ -135,7 +132,7 @@
             { "id": "c1.24", "front": "What lighting direction do we assume by default?", "back": "That light comes from above" },
             { "id": "c1.25", "front": "What explains the Lilac Chaser illusion?", "back": "Colour opponency, apparent motion, Troxler fading" },
             { "id": "c1.26", "front": "What explains the colour cube and 'The Dress' illusions?", "back": "Simultaneous colour contrast, context integration, colour constancy" },
-            { "id": "c1.27", "front": "What explains motion-induced blindness (illusion table)?", "back": "Ignoring what doesn't change" },
+            { "id": "c1.27", "front": "What explains motion-induced blindness?", "back": "Ignoring what doesn't change" },
             { "id": "c1.28", "front": "What explains 'monstrous faces in sequence'?", "back": "Exaggerating changes that matter" },
             { "id": "c1.29", "front": "What explains a bistable spinner?", "back": "Interpretation equals awareness; attention" }
           ]
@@ -163,7 +160,6 @@
             { "id": "a1.17", "front": "Why are fixational eye movements needed?", "back": "They prevent retinal adaptation; a fully still image causes loss of vision" },
             { "id": "a1.18", "front": "What is smooth pursuit?", "back": "Eye movement that maintains a stable stimulus location on the fovea" },
             { "id": "a1.19", "front": "What is salience?", "back": "Noticeable bottom-up stimuli or important top-down features; depends on context" },
-            { "id": "a1.20", "front": "What is scene schema?", "back": "Prior expectations about where to look in a scene" },
             { "id": "a1.21", "front": "What makes something more salient relative to scene schema?", "back": "Violating prior expectations/schema" },
             { "id": "a1.22", "front": "What is the premotor theory of attention?", "back": "That covert attention results from weaker activation of the same circuits that control eye movements" },
             { "id": "a1.23", "front": "What evidence supports the premotor theory?", "back": "fMRI shows similar activation whether attention is overt or covert, and attention deployment precedes eye movements" },
@@ -180,7 +176,7 @@
             { "id": "a1.34", "front": "What is the same-object advantage?", "back": "An uncued location is detected faster if it's part of a cued object, versus an equally distant uncued location in a different object" },
             { "id": "a1.35", "front": "What is inattentional blindness?", "back": "Failure to notice an event we might expect to notice, e.g. the gorilla test" },
             { "id": "a1.36", "front": "What is the capacity model of attention?", "back": "Attention is a limited resource, similar to fuel" },
-            { "id": "a1.37", "front": "What is a central bottleneck?", "back": "A limit on how many things we can process/do at once" },
+            { "id": "a1.37", "front": "What is a central bottleneck?", "back": "A limit on number/complexity of things we can process/do at once" },
             { "id": "a1.38", "front": "What is the sequential attention hypothesis?", "back": "That covert attention shifts to a location before overt eye movement follows" },
             { "id": "a1.39", "front": "What are regressions in reading?", "back": "Backward saccades during reading that usually go unnoticed" },
             { "id": "a1.40", "front": "How many characters are needed around fixation for normal reading?", "back": "About 17-20 characters" },
@@ -202,14 +198,13 @@
             { "id": "m1.9", "front": "What are the serial position effects?", "back": "Better recall for items at the start (primacy) and end (recency) of a list" },
             { "id": "m1.10", "front": "What is the primacy effect?", "back": "Better recall for items at the start of a list" },
             { "id": "m1.11", "front": "What is the recency effect?", "back": "Better recall for items at the end of a list" },
-            { "id": "m1.12", "front": "What stimuli did Ebbinghaus use?", "back": "CVC trigrams (consonant-vowel-consonant, e.g. fep, gir, kol)" },
             { "id": "m1.13", "front": "Why did Ebbinghaus use CVC trigrams?", "back": "To use meaningless material and minimize prior associations" },
             { "id": "m1.14", "front": "What is savings (Ebbinghaus)?", "back": "The reduction in trials/effort needed to relearn material compared to original learning" },
             { "id": "m1.15", "front": "What shape is the Ebbinghaus forgetting curve?", "back": "It drops quickly then shallows out over time" },
             { "id": "m1.16", "front": "What is the retention interval?", "back": "The time between the study phase and the test phase" },
             { "id": "m1.17", "front": "What is the availability problem?", "back": "Not knowing whether information is available/stored in memory" },
             { "id": "m1.18", "front": "What is the accessibility problem?", "back": "Information may be available but not accessible/retrievable without the right cue" },
-            { "id": "m1.19", "front": "What did Tulving & Pearlstone (1966) show?", "back": "Category cues improve recall of items not retrieved in free recall, demonstrating an accessibility problem" }
+            { "id": "m1.19", "front": "What did Category cues improving recall of items not retrieved in free recall show?", "back": "That there is an accessibility problem" }
           ]
         },
         {
@@ -218,20 +213,18 @@
           "cards": [
             { "id": "m2.1", "front": "What is iconic memory?", "back": "A temporary sensory store of visual information" },
             { "id": "m2.2", "front": "What did duration judgment studies show about iconic memory?", "back": "The subjective duration of a flash is longer than its actual physical duration" },
-            { "id": "m2.3", "front": "What was Sperling's (1960) task?", "back": "Briefly flash a matrix of letters, then have participants report letters via whole or partial report" },
             { "id": "m2.4", "front": "What is whole report?", "back": "Reporting all letters in a briefly flashed matrix" },
-            { "id": "m2.5", "front": "What did whole report performance show?", "back": "Participants could only report about 4.5 letters out of 12" },
+            { "id": "m2.5", "front": "What did whole report performance show?", "back": "Participants could only report about one third of letters in a matrix" },
             { "id": "m2.6", "front": "What is partial report?", "back": "Reporting only one cued row of a briefly flashed matrix" },
-            { "id": "m2.7", "front": "What did partial report reveal about capacity?", "back": "A higher estimated span of apprehension (~9.1 letters) than whole report" },
+            { "id": "m2.7", "front": "What did partial report reveal about capacity?", "back": "A higher estimated span of apprehension ~80% than whole report" },
             { "id": "m2.8", "front": "What did delaying the partial report cue reveal?", "back": "A rapid forgetting curve - performance drops toward whole report levels within about 1 second" },
             { "id": "m2.9", "front": "What is a forward mask?", "back": "A mask presented before the stimulus, causing proactive interference" },
             { "id": "m2.10", "front": "What is a backward mask?", "back": "A mask presented after the stimulus, causing retroactive interference" },
             { "id": "m2.11", "front": "What is the integration explanation of masking?", "back": "The mask and stimulus become perceptually enmeshed/combined" },
             { "id": "m2.12", "front": "What is the interruption explanation of masking?", "back": "Processing of the stimulus is stopped and processing of the mask begins" },
-            { "id": "m2.13", "front": "What did Averbach & Coriell (1961) use to compare integration vs interruption?", "back": "A circle cue (backward mask) vs a bar cue to indicate which letter to report" },
-            { "id": "m2.14", "front": "What did the bar vs circle cue comparison show?", "back": "Performance was much better with the bar cue than the circle cue" },
-            { "id": "m2.15", "front": "What is a metacontrast mask?", "back": "A masking effect where a contour near (not overlapping) the stimulus impairs its perception, as with the circle cue" },
-            { "id": "m2.16", "front": "What critical assumption underlies the Sperling task?", "back": "That participants must access LTM/LTS to identify/report the letters, via or alongside STS" }
+            { "id": "m2.13", "front": "How was integration vs interruption studied in a cued task?", "back": "A circle cue (backward mask) vs a bar cue to indicate which letter to report" },
+            { "id": "m2.14", "front": "What did the bar vs circle cue comparison show?", "back": "Performance was much better with the bar cue than the circle cue (supporting interruption)" },
+            { "id": "m2.15", "front": "What is a metacontrast mask?", "back": "A masking effect where a contour near (not overlapping) the stimulus impairs its perception, as with the circle cue" }
           ]
         },
         {
@@ -239,13 +232,12 @@
           "name": "Echoic Memory",
           "cards": [
             { "id": "m3.1", "front": "What is echoic memory?", "back": "A brief auditory sensory memory store; also called the precategorical acoustic store" },
-            { "id": "m3.2", "front": "What did Darwin, Turvey & Crowder (1972) do?", "back": "Reversed Sperling's procedure using auditory stimuli to test whole vs partial report" },
-            { "id": "m3.3", "front": "What did whole vs partial report show for echoic memory?", "back": "Partial report showed a higher estimated capacity (~4.9 items) than whole report (~4.2 items)" },
+            { "id": "m3.2", "front": "How to test partial report for echoic memory?", "back": "Play 3 tracks, a left, right and center track and cue one of them" },
+            { "id": "m3.3", "front": "What did whole vs partial report show for echoic memory?", "back": "Partial report showed a higher estimated capacity than whole report" },
             { "id": "m3.4", "front": "How does the echoic memory forgetting curve compare to iconic memory?", "back": "Echoic memory decays more slowly / lasts longer than iconic memory" },
             { "id": "m3.5", "front": "What is the stimulus suffix effect?", "back": "An extra sound (suffix) added after an auditory list interferes with recall of the last items" },
             { "id": "m3.6", "front": "What is the modality effect?", "back": "Recall differs depending on whether items were presented auditorily or visually" },
-            { "id": "m3.7", "front": "How does the modality effect typically show up in recall curves?", "back": "Auditory presentation gives better recall of the last few list items than visual presentation" },
-            { "id": "m3.8", "front": "What did Corballis (1966) find about the modality effect?", "back": "Using a light or auditory cue to signal recall gave the same modality effect pattern" }
+            { "id": "m3.7", "front": "How does the modality effect typically show up in recall curves?", "back": "Auditory presentation gives better recall of the last few list items than visual presentation" }
           ]
         }
       ]
