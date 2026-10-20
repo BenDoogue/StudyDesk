@@ -254,6 +254,325 @@
           ]
         }
       ]
+    },
+    {
+      "id": "AIML335",
+      "name": "AIML335: Learning Representations",
+      "sections": [
+        {
+          "id": "f1",
+          "name": "Foundations: Matrices, Loss, Optimisation",
+          "cards": [
+            { "id": "f1.1", "front": "Matrix shape rules: row, column, and multiplication?", "back": "Row = 1×n, column = n×1. Multiplying: inner dimensions cancel, outer dimensions give the result shape. (a×b)(b×c) = a×c." },
+            { "id": "f1.2", "front": "Row × column vs column × row?", "back": "Row (1×n) × column (n×1) = scalar (inner product). Column (n×1) × row (1×n) = n×n matrix (outer product)." },
+            { "id": "f1.3", "front": "Loss vs cost?", "back": "Loss = error on a single datapoint. Cost = error over the whole dataset (often includes regularisation penalties)." },
+            { "id": "f1.4", "front": "What is optimisation in ML?", "back": "Adjusting a model's parameters to minimise an objective function (loss/cost) so the model is as accurate as possible." },
+            { "id": "f1.5", "front": "MSE (L2) loss: formula and behaviour?", "back": "(1/n)‖y − ŷ‖₂². Squaring makes big errors huge, so it penalises outliers heavily; small errors barely matter." },
+            { "id": "f1.6", "front": "MAE (L1) loss: formula and behaviour?", "back": "(1/n)Σ|y − ŷ|. Linear treatment of errors, so it is robust to outliers. Minimised by the conditional median (MSE gives the conditional mean)." },
+            { "id": "f1.7", "front": "What is the Huber loss?", "back": "A combination of MSE and MAE: quadratic for small errors, linear for large ones." },
+            { "id": "f1.8", "front": "Name the main optimisers and what each adds.", "back": "SGD (stochastic gradient descent); SGD+momentum (smooths direction); Adagrad (adaptive step, shrinks toward 0 over many steps); RMSprop (moving avg of squared gradients: small steps on large gradients, larger on flat ones); Adam = RMSprop + momentum." },
+            { "id": "f1.9", "front": "What does gradient descent do?", "back": "Moves the parameters in the direction of steepest decrease of the loss (the negative gradient), step size set by the learning rate." },
+            { "id": "f1.10", "front": "Algorithmic vs procedural optimisation methods?", "back": "Algorithmic: e.g. linear programming, gradient descent. Procedural: heuristic search, genetic algorithms." },
+            { "id": "f1.11", "front": "What is a conservative system, and why does it matter?", "back": "A vector field that is the gradient of a scalar field. Gradient descent on the scalar (the loss) can then converge to a fixed point." },
+            { "id": "f1.12", "front": "Scalar field vs vector field?", "back": "Scalar field: L: ℝⁿ → ℝ (one number per point, e.g. loss). Vector field: f: ℝⁿ → ℝᵐ. It is conservative if it is the gradient of a scalar field." },
+            { "id": "f1.13", "front": "What is convexity?", "back": "A function is convex if the chord between any two points on its graph lies on or above the graph. Any local minimum of a convex function is a global minimum." },
+            { "id": "f1.14", "front": "Gradient vs Hessian?", "back": "Gradient = slope (vector of first derivatives). Hessian = curvature (matrix of second derivatives); H_ij says how the slope in direction i changes as you move in direction j." },
+            { "id": "f1.15", "front": "Second-order test for convexity?", "back": "f is convex if its Hessian is positive semi-definite (PSD) everywhere." },
+            { "id": "f1.16", "front": "What does positive semi-definite (PSD) mean?", "back": "A matrix A is PSD if vᵀAv ≥ 0 for every direction v. (Follows from g(t)=f(x+tv) having g''(t) = vᵀHv ≥ 0 via the chain rule.)" },
+            { "id": "f1.17", "front": "What is ill-conditioning and when does it happen?", "back": "When d >> n the Hessian is ill-conditioned: many directions have zero gradient (flat) while others are narrow trenches where gradient descent bounces around." },
+            { "id": "f1.18", "front": "How do you fix poor learning from ill-conditioning?", "back": "Add a regularisation term to the loss (gives curvature/gradient in flat directions), or change the optimiser." }
+          ]
+        },
+        {
+          "id": "cl1",
+          "name": "Continual Learning, RAG & Agents",
+          "cards": [
+            { "id": "cl1.1", "front": "What is continual learning?", "back": "Updating a model as new data arrives, retaining old knowledge while improving. Used when full retraining is infeasible. It is still one learning problem and needs no change to the NN architecture." },
+            { "id": "cl1.2", "front": "Domain-, class- and task-incremental scenarios?", "back": "Domain-incremental: classes stay the same, input distribution changes. Class-incremental: each new task adds new classes. Task-incremental: task identity is known at training and test time." },
+            { "id": "cl1.3", "front": "What is catastrophic forgetting?", "back": "The learner loses earlier capabilities when trained on new tasks. (Sometimes forgetting redundant info is good.)" },
+            { "id": "cl1.4", "front": "Stability vs plasticity dilemma?", "back": "Minimise loss of old tasks (stability) while still learning new ones (plasticity). Can't maximise both." },
+            { "id": "cl1.5", "front": "Four continual-learning baselines?", "back": "Naïve sequential (update on current data only); Joint training (all data, even future: upper bound); Frozen model (no updates after the first task); Cumulative (train on everything seen so far)." },
+            { "id": "cl1.6", "front": "Replay strategies?", "back": "Preserve past experience. Naïve (none), Bounded (a sample from previous tasks), Full (cumulative: everything)." },
+            { "id": "cl1.7", "front": "Regularisation strategy: EWC?", "back": "Elastic Weight Consolidation: penalise updates to parameters that were important for old tasks." },
+            { "id": "cl1.8", "front": "Isolation strategy: PackNet?", "back": "Reserves capacity per task: prune the least important weights, then retrain only the freed weights for the new task." },
+            { "id": "cl1.9", "front": "What is RAG and why use it?", "back": "Retrieval-Augmented Generation: instead of updating network weights, update a document store. Easier to add or change individual facts." },
+            { "id": "cl1.10", "front": "What is semantic retrieval?", "back": "Embed the query as a vector capturing meaning, then retrieve documents whose vectors are most similar." },
+            { "id": "cl1.11", "front": "Two embedding methods for retrieval?", "back": "TF-IDF (bag of words: lexical match) and MiniLM (semantic similarity)." },
+            { "id": "cl1.12", "front": "Retrieval metrics: recall@k and MRR?", "back": "recall@k: is the correct doc in the top k results? MRR (mean reciprocal rank): average of 1/rank of the first correct result; 1 = best, approaches 0 = worst." },
+            { "id": "cl1.13", "front": "Model vs agent?", "back": "Model: maps input to output. Agent: observes to build its input, decides via LLM deliberation, acts via a harness, observes the result, and loops." },
+            { "id": "cl1.14", "front": "Workflow vs agent?", "back": "Workflow: the developer defines the control flow. Agent: the model defines the flow." },
+            { "id": "cl1.15", "front": "What is MCP?", "back": "Model Context Protocol: a standard way for AI models to interact with tools and data." },
+            { "id": "cl1.16", "front": "Agent failure modes?", "back": "Context exhaustion (context window fills up) and false completion (claims the task is done when it isn't)." }
+          ]
+        },
+        {
+          "id": "g1",
+          "name": "Probability Rules & Gaussians",
+          "cards": [
+            { "id": "g1.1", "front": "Product rule?", "back": "P(X,Y) = P(X) P(Y|X). Joint = marginal × conditional (either order). It amounts to a factorisation." },
+            { "id": "g1.2", "front": "Sum rule (marginalising)?", "back": "P(X) = Σ_y P(X, Y=y) (integral for continuous). Removes a variable by summing over it." },
+            { "id": "g1.3", "front": "What is factorisation?", "back": "Splitting an expression into parts whose product equals the original, e.g. P(X,Y) = P(X)P(Y|X)." },
+            { "id": "g1.4", "front": "Bayes' rule?", "back": "P(θ|D) = P(D|θ) P(θ) / P(D). Posterior = likelihood × prior / evidence. It infers causes from their effects." },
+            { "id": "g1.5", "front": "What is the posterior?", "back": "The updated probability distribution over the parameters (or latent variables) after seeing the data: P(θ|D) ∝ P(D|θ)P(θ)." },
+            { "id": "g1.6", "front": "What is the prior?", "back": "Your initial belief about parameters before seeing data, P(θ) (e.g. weights are probably small). It acts as a penalty/regulariser when you do MAP." },
+            { "id": "g1.7", "front": "What is the likelihood?", "back": "P(D|θ): probability of the observed data as a function of the parameters. Not a distribution over θ. For i.i.d. data it is a product over datapoints (a sum after taking logs)." },
+            { "id": "g1.8", "front": "What is the evidence / normalisation term?", "back": "P(D): total probability of the data across all parameter values, from the sum rule. Makes the posterior sum to 1; doesn't depend on θ." },
+            { "id": "g1.9", "front": "Continuous data and probability?", "back": "A single point has zero probability; you must use probability densities (and integrate over regions)." },
+            { "id": "g1.10", "front": "Why do we like to use Gaussians?", "back": "(1) Convenient: log-density is a quadratic, so MLE/MAP become least squares, closed-form. (2) Closed under linear maps, products and marginals: posteriors of Gaussian priors × Gaussian likelihoods stay Gaussian. (3) CLT: sums of many independent variables approach a Gaussian, so noise is often well-modelled by it. (4) Fully described by mean and covariance." },
+            { "id": "g1.11", "front": "1-D Gaussian formula and parameters?", "back": "N(x; μ, σ²) = (1/(σ√2π)) exp(−(x−μ)²/(2σ²)). μ = mean (centre), σ² = variance (average squared deviation from the mean). It's an exponentiated parabola." },
+            { "id": "g1.12", "front": "What does a linear transformation do to a Gaussian?", "back": "Stretches, rotates and shifts it, but it stays Gaussian (a linear map of a quadratic is still a quadratic)." },
+            { "id": "g1.13", "front": "Multivariate Gaussian formula?", "back": "N(x; μ, Σ) = (2π)^(−d/2)|Σ|^(−1/2) exp(−½(x−μ)ᵀΣ⁻¹(x−μ)). Σ⁻¹ generalises 1/σ². Isotropic: Σ = σ²I (circular contours)." },
+            { "id": "g1.14", "front": "Empirical mean and covariance of an n×d data matrix X?", "back": "Mean m = (1/n)·(sum down the rows), shape 1×d. Covariance Σ_emp = (1/n)(X−m)ᵀ(X−m), shape d×d." },
+            { "id": "g1.15", "front": "Show that the ML mean of a Gaussian is μ_ML = m_emp.", "back": "log L = −½Σₙ(xₙ−μ)ᵀΣ⁻¹(xₙ−μ) + const. Differentiate w.r.t. μ: ∇ = Σ⁻¹Σₙ(xₙ−μ). Set to 0 ⇒ Σₙxₙ = Nμ ⇒ μ_ML = (1/N)Σₙxₙ = m_emp. (Second derivative is negative-definite, so it's a maximum.)" },
+            { "id": "g1.16", "front": "ML covariance of a Gaussian?", "back": "Σ_ML = Σ_emp = (1/N)Σₙ(xₙ−m)(xₙ−m)ᵀ (harder to derive, but same pattern as the mean)." },
+            { "id": "g1.17", "front": "Combining a Gaussian prior and Gaussian likelihood (1-D)?", "back": "Multiply them: in log space you're just adding parabolas. Result is a Gaussian whose mean is a precision-weighted average, shrunk toward the prior mean, and narrower than either." },
+            { "id": "g1.18", "front": "Variance: definition?", "back": "The average squared deviation from the mean. Its square root is the standard deviation." }
+          ]
+        },
+        {
+          "id": "r1",
+          "name": "Likelihood, MAP & Regularisation",
+          "cards": [
+            { "id": "r1.1", "front": "What is maximum likelihood estimation (MLE)?", "back": "Choose parameters θ that make the observed data most probable: θ_ML = argmax P(D|θ). Equivalent to minimising the negative log-likelihood (NLL)." },
+            { "id": "r1.2", "front": "Why use the log in MLE?", "back": "Turns the product over i.i.d. datapoints into a sum, which is easier to differentiate and numerically stable. Log is monotonic so the argmax is unchanged." },
+            { "id": "r1.3", "front": "MLE recipe (what to do in a question)?", "back": "1) Write the likelihood P(D|θ) (product over i.i.d. points). 2) Take the log. 3) Differentiate w.r.t. θ. 4) Set to zero and solve. 5) Check it's a maximum. E.g. Bernoulli with k heads in N flips: log L = k log p + (N−k) log(1−p) ⇒ p_ML = k/N." },
+            { "id": "r1.4", "front": "What is MAP (maximum a posteriori) estimation?", "back": "θ_MAP = argmax P(θ|D) = argmin [ −log P(D|θ) − log P(θ) ]: the likelihood/empirical loss plus a regularisation penalty from the prior." },
+            { "id": "r1.5", "front": "Difference between maximum likelihood and maximising the posterior?", "back": "ML maximises P(D|θ) only (data alone). MAP maximises P(θ|D) ∝ P(D|θ)P(θ), so it also includes a prior belief about θ. MAP = ML + penalty; with a flat prior they coincide. MAP is less prone to overfitting." },
+            { "id": "r1.6", "front": "MAP recipe (what to do in a question)?", "back": "1) Write the posterior ∝ likelihood × prior. 2) Take −log: NLL + (−log prior). 3) Differentiate, set to zero, solve. E.g. Gaussian likelihood + N(0,σ_w²) prior on a weight ⇒ w_MAP shrunk toward 0 vs w_ML." },
+            { "id": "r1.7", "front": "Ridge regression / L2 / Tikhonov regularisation?", "back": "Adds a penalty on squared weights: L₀(w) + (λ/2n)Σw². Forces smaller, more distributed weights. It is MAP with a Gaussian prior on the weights." },
+            { "id": "r1.8", "front": "Lasso / L1 regularisation?", "back": "Adds a penalty proportional to the absolute values of the weights. Penalises non-zero weights equally and drives unimportant weights exactly to zero (sparsity). It is MAP with a Laplace prior." },
+            { "id": "r1.9", "front": "L1 vs L2 weight decay per step?", "back": "L2 decay scales with the weight's magnitude (shrinks big weights more). L1 subtracts a fixed constant every step. L1 is an embedded feature-selection method." },
+            { "id": "r1.10", "front": "How do you do gradient descent with L1?", "back": "|w| isn't differentiable at 0, so use the sign function as the (sub)gradient: +1, −1 or 0." },
+            { "id": "r1.11", "front": "What is the Laplace prior?", "back": "A curve with a sharp pointed peak at zero (and heavy tails). It's the prior corresponding to L1 regularisation." },
+            { "id": "r1.12", "front": "What is TV (total variation) regularisation?", "back": "Penalises absolute differences between adjacent output elements, encouraging smooth/piecewise-constant outputs." },
+            { "id": "r1.13", "front": "Define regularisation.", "back": "Adding a term to the loss function (or modifying the data) to prevent overfitting." },
+            { "id": "r1.14", "front": "Why are priors penalties?", "back": "−log P(θ) is added to the NLL when doing MAP. Gaussian prior ⇒ squared (L2) penalty (weight decay); Laplace prior ⇒ L1 penalty." },
+            { "id": "r1.15", "front": "Likelihood vs cross-entropy?", "back": "Essentially the same thing: the average negative log-likelihood of the data under the model is the cross-entropy between the empirical distribution and the model." }
+          ]
+        },
+        {
+          "id": "c2",
+          "name": "Constrained Optimisation & Lagrange",
+          "cards": [
+            { "id": "c2.1", "front": "Equality-constrained optimisation: standard form?", "back": "min (or max) f(x) subject to g(x) = 0. f = objective function, g = constraint function (defines a surface S in feature space). E.g. minimise fuel use given a fixed trajectory." },
+            { "id": "c2.2", "front": "How to formulate a problem as a standard equality-constrained problem (template)?", "back": "1) Choose variables x. 2) Write what you want to optimise as f(x). 3) Rewrite every 'must equal' condition as g(x) = 0 (move everything to one side). Example: min f = x₁² − 10x₁ − x₂² on the ellipse x₁² + 4x₂² = 16 ⇒ g = x₁² + 4x₂² − 16 = 0." },
+            { "id": "c2.3", "front": "What is a Lagrange multiplier and the Lagrangian?", "back": "λ is a multiplier per constraint. Lagrangian: L(x,λ) = f(x) − λg(x). Stationary points of L (∇ₓL = 0 and g = 0) are candidate optima of the constrained problem." },
+            { "id": "c2.4", "front": "Lagrange equations: geometric meaning?", "back": "∇f = λ∇g. At the optimum the gradient of f is parallel (same or opposite direction) to the gradient of g, i.e. perpendicular to the constraint surface: a point of tangency between a level curve of f and the constraint." },
+            { "id": "c2.5", "front": "Lagrange multipliers: solution procedure?", "back": "1) Form the Lagrange equations ∂f/∂xᵢ = λ ∂g/∂xᵢ for each i, plus g = 0. 2) Solve for λ (or one variable) in terms of the others. 3) Substitute into g = 0 to find candidate points. 4) Evaluate f at each candidate; the smallest/largest is the global min/max." },
+            { "id": "c2.6", "front": "What does the constraint shape look like for x₁²+x₂²−1=0 vs |x₁|+|x₂|−4=0?", "back": "First is a circle, second is a diamond. Constraint surfaces are 1-D curves in the 2-D feature space." },
+            { "id": "c2.7", "front": "What are the requirements for Lagrange multipliers?", "back": "f and g must have continuous partial derivatives (smooth gradients)." },
+            { "id": "c2.8", "front": "General optimisation problem (with inequalities)?", "back": "min f₀(x) s.t. fᵢ(x) ≤ 0, i = 1..m (inequality constraints) and hⱼ(x) = 0, j = 1..p (equality constraints)." },
+            { "id": "c2.9", "front": "How to form an inequality-constrained optimisation problem (template)?", "back": "Put the objective in f₀ and rewrite each 'at most / at least' condition as fᵢ(x) ≤ 0. Example: minimise x₁² + x₂² subject to x₁ + x₂ ≥ 1 ⇒ f₀ = x₁² + x₂², f₁ = 1 − x₁ − x₂ ≤ 0. Lagrangian L = f₀ + λf₁ with λ ≥ 0." },
+            { "id": "c2.10", "front": "Lagrange dual function?", "back": "g(λ,ν) = inf over x of the Lagrangian L(x,λ,ν). It equals −∞ when the Lagrangian is unbounded below for those λ,ν. It is always a lower bound on the optimal primal value." },
+            { "id": "c2.11", "front": "Primal vs dual problem?", "back": "Primal: the standard minimisation problem. Dual: maximise the dual function over the dual variables (Lagrange multipliers), swapping minimisation for maximisation." }
+          ]
+        },
+        {
+          "id": "i1",
+          "name": "Information Theory & KL",
+          "cards": [
+            { "id": "i1.1", "front": "What does 'decodable' mean for a code?", "back": "The code z lets you recover the input x. Just a working assumption: later codes are allowed to discard information (bottleneck)." },
+            { "id": "i1.2", "front": "Surprise (information content)?", "back": "I(x) = log(1/p(x)). Rare events are more surprising (→ ∞ as p → 0); log makes independent events additive while probabilities multiply." },
+            { "id": "i1.3", "front": "Entropy?", "back": "H(p) = Σ p(x) log(1/p(x)) = E[surprise]: uncertainty of a distribution. Uniform = most uncertain (max, log₂K bits for K options); one certain outcome = 0." },
+            { "id": "i1.4", "front": "Coding interpretation of entropy?", "back": "Average code length needed to transmit symbols drawn from p using the optimal code for p. Common events get short codes, rare ones long." },
+            { "id": "i1.5", "front": "Why do very low-p events contribute little to entropy?", "back": "Each term is p·log(1/p); as p → 0 the p factor shrinks faster than log(1/p) grows, so the contribution → 0." },
+            { "id": "i1.6", "front": "Cross-entropy?", "back": "H(p,q) = Σ p(x) log(1/q(x)): average surprise when data come from p but you believe q. Always ≥ H(p)." },
+            { "id": "i1.7", "front": "KL divergence?", "back": "KL[p‖q] = cross-entropy − entropy = Σ p log(p/q) ≥ 0 (Gibbs' inequality), zero iff p = q. The extra, unwanted surprise (extra code length) from using q when truth is p." },
+            { "id": "i1.8", "front": "Is KL symmetric?", "back": "No. KL[p‖q] ≠ KL[q‖p] in general. The ELBO/VAE uses KL[q‖p] (reverse of the one used for MLE)." },
+            { "id": "i1.9", "front": "Empirical distribution?", "back": "p̂: a sum of delta functions, one at each datapoint, each weighted 1/N." },
+            { "id": "i1.10", "front": "Training loss as cross-entropy?", "back": "H(p̂, q) = (1/N)Σ log(1/q(xₙ|θ)) = average negative log-likelihood. Minimising it pushes q up at the observed points." },
+            { "id": "i1.11", "front": "Show that max likelihood = minimising KL.", "back": "KL[p̂‖q_θ] = H(p̂, q_θ) − H(p̂). H(p̂) doesn't depend on θ (data are fixed), so minimising KL over θ = minimising cross-entropy = minimising NLL = maximising log-likelihood." },
+            { "id": "i1.12", "front": "Log-likelihood and log loss?", "back": "Log-likelihood = Σ log p(data|θ); maximising it equals minimising log loss = −log-likelihood = total surprisal." },
+            { "id": "i1.13", "front": "One-line summary: entropy vs cross-entropy vs KL?", "back": "Entropy: how surprised you expect to be. Cross-entropy: how surprised you are using the wrong model. KL: the extra surprise from the wrong model." }
+          ]
+        },
+        {
+          "id": "b1",
+          "name": "Bayesian Linear Regression",
+          "cards": [
+            { "id": "b1.1", "front": "Three ways to fit a linear model?", "back": "Optimise (gradient descent), solve in one step (pseudo-inverse), or infer (Bayesian probability theory)." },
+            { "id": "b1.2", "front": "Linear regression model, predictor, error and loss?", "back": "Model: Y = X·W_true + ε. Predictor: Ŷ = XW. Error: ε = Y − XW (same shape as Y). Loss: L = ½tr(εᵀε) = ½ΣΣε²ᵢⱼ (a scalar)." },
+            { "id": "b1.3", "front": "Gradient of the linear regression loss?", "back": "∇_W L = −Xᵀ(Y − XW) = −Xᵀε. By the chain rule: ∂L/∂w = tr(εᵀ ∂ε/∂w), with ∇_W ε → Xᵀ and ∇_ε L = ε." },
+            { "id": "b1.4", "front": "Derive the pseudo-inverse solution.", "back": "Set gradient to 0: Xᵀ(Y − XŴ) = 0 ⇒ XᵀY = XᵀXŴ ⇒ Ŵ = (XᵀX)⁻¹XᵀY. The matrix (XᵀX)⁻¹Xᵀ is the pseudo-inverse." },
+            { "id": "b1.5", "front": "What is the pseudo-inverse and why is it called that?", "back": "(XᵀX)⁻¹Xᵀ. X is tall (n×d), not square, so it has no true inverse. But (XᵀX)⁻¹Xᵀ·X = I (a left inverse), and it gives the least-squares solution to XW ≈ Y. It plays the role of an inverse, hence 'pseudo'." },
+            { "id": "b1.6", "front": "Regularised pseudo-inverse / ridge solution?", "back": "Ŵ = (λI + XᵀX)⁻¹XᵀY. Adding λI to the diagonal makes XᵀX + λI always invertible (all diagonal terms > 0) and penalises large weights." },
+            { "id": "b1.7", "front": "Why add λI?", "back": "Numerical stability (XᵀX may be singular) and regularisation (shrinks weights, prevents overfitting). It's also exactly the result of a Gaussian prior on W." },
+            { "id": "b1.8", "front": "Why is linear regression an inference problem?", "back": "We know X and Y and want W: infer P(W|X,Y). This gives a distribution over weights, hence uncertainty (error bars), not just a point estimate." },
+            { "id": "b1.9", "front": "Posterior over W in Bayesian linear regression?", "back": "P(W|X,Y) ∝ P(Y|X,W) P(W) (X is observed, P(X) is a delta). Graph: X → Y ← W is a collider." },
+            { "id": "b1.10", "front": "Likelihood and prior used?", "back": "Likelihood: Y = XW + ε, ε ~ N(0, σ_ε²), so p(Y|X,W) = N(Y; XW, σ_ε²I). Prior: W ~ N(0, σ_w²I) i.i.d. on each weight." },
+            { "id": "b1.11", "front": "Derive W_MAP.", "back": "−log p(W|X,Y) = (1/σ_ε²)·½tr(εᵀε) + (1/σ_w²)·½WᵀW + const. Gradient: −(1/σ_ε²)Xᵀ(Y−XW) + (1/σ_w²)W = 0 ⇒ XᵀY = (XᵀX + (σ_ε²/σ_w²)I)W ⇒ W_MAP = ((σ_ε²/σ_w²)I + XᵀX)⁻¹XᵀY." },
+            { "id": "b1.12", "front": "Interpret W_MAP: what is λ, and its limits?", "back": "λ = σ_ε²/σ_w² (noise var / prior var). σ_ε² → 0: back to pseudo-inverse (= ML). σ_ε² → ∞: W → 0 (just the prior)." },
+            { "id": "b1.13", "front": "Posterior covariance of W?", "back": "Σ_map = σ_ε² · ((σ_ε²/σ_w²)I + XᵀX)⁻¹: the '(⋯)⁻¹' part of W_MAP times σ_ε². It encodes remaining uncertainty about the true weights." },
+            { "id": "b1.14", "front": "Predictive mean and variance for a new input x?", "back": "Mean: y_pred = x·W_MAP. Variance: σ²_pred = σ_ε² + x Σ_map xᵀ (noise + weight uncertainty). Gives error bars, which shrink near the data." },
+            { "id": "b1.15", "front": "How does prediction relate to the sum rule?", "back": "Predicting Y means marginalising (sum rule) over the unknown W. The linear algebra of the pseudo-inverse does this for us." },
+            { "id": "b1.16", "front": "What is the inverse problem?", "back": "W known, X unknown: infer P(X|Y,W) from Y = XW. Transpose: Yᵀ = WᵀXᵀ, reuse Eq. I with Wᵀ playing X: X̂_map = YWᵀ((σ_ε²/σ_x²)I + WWᵀ)⁻¹." },
+            { "id": "b1.17", "front": "Noisy-sensor example of the inverse problem?", "back": "X ~ N(0,σ_x²), Y = X + ε. MAP x̂ = y/(1+σ_ε²/σ_x²) (shrinks y toward the prior mean 0). Posterior variance σ_x²σ_ε²/(σ_x²+σ_ε²): narrower than both prior and noise (precision-weighted average; cf. Kalman filters)." }
+          ]
+        },
+        {
+          "id": "p4",
+          "name": "pPCA & Linear Autoencoders",
+          "cards": [
+            { "id": "p4.1", "front": "What is probabilistic PCA (pPCA) and an example use?", "back": "A latent-variable model Y = ZW + ε where low-dim Gaussian codes Z (unknown) generate high-dim data Y through an unknown linear map W. Learns the subspace + noise level. Example: compressing/denoising face images (219 faces → 2-D codes), dimension reduction, generating new faces by walking in code space." },
+            { "id": "p4.2", "front": "How does pPCA use alternating inference (EM)?", "back": "Initialise W randomly, then repeat: E-step: fix W, infer Z (inverse problem). M-step: fix Z, infer W (Bayesian linear regression). Both use the regularised pseudo-inverse trick, swapping which variable is 'known'." },
+            { "id": "p4.3", "front": "pPCA E-step and M-step equations?", "back": "E: Ẑᵀ = ((σ_ε²/σ_z²)I + WWᵀ)⁻¹WYᵀ. M: Ŵ = ((σ_ε²/σ_w²)I + ZᵀZ)⁻¹ZᵀY." },
+            { "id": "p4.4", "front": "What is the prior used for in pPCA's EM?", "back": "Priors N(0,σ_z²I) on Z and N(0,σ_w²I) on W appear as the λI terms in the E- and M-steps. They regularise each step (ridge) and anchor the scale of Z and W." },
+            { "id": "p4.5", "front": "What does pPCA's alternation minimise?", "back": "J(Z,W) = ‖Y − ZW‖² + λ_z‖Z‖² + λ_w‖W‖², with λ_z = σ_ε²/σ_z², λ_w = σ_ε²/σ_w². Reconstruction error plus one penalty per prior: a penalised autoencoder." },
+            { "id": "p4.6", "front": "Why does pPCA converge so fast in the faces demo?", "back": "Both steps are closed-form pseudo-inverses; by iteration 1 W is face-like, and by iteration 2 reconstruction error has essentially stopped changing." },
+            { "id": "p4.7", "front": "Subtlety: pPCA 'as run' in the course vs textbook pPCA?", "back": "Only posterior means are kept (not full EM using posterior covariance), and W has a prior. So it climbs the joint posterior rather than the evidence. Textbook pPCA has no prior on W (σ_w² → ∞)." },
+            { "id": "p4.8", "front": "Autoencoder: definition?", "back": "An encoder maps input x to a code z; a decoder maps z to a reconstruction x̂. Trained jointly to minimise ‖x − x̂‖². Data x, code z, reconstruction x̂." },
+            { "id": "p4.9", "front": "How does the E-step relate to an autoencoder?", "back": "Ẑ = Y·W_enc with W_enc = Wᵀ((σ_ε²/σ_z²)I + WWᵀ)⁻¹ (a regularised pseudo-inverse of W, not its transpose). Reconstruction Ŷ = Y·W_enc·W. Encoder + decoder, both linear." },
+            { "id": "p4.10", "front": "Generative model of pPCA vs the autoencoder?", "back": "pPCA is probabilistic: specifies prior p(z) and likelihood p(y|z), so it gives p(y), a posterior on codes, uncertainty, and can sample new data. The AE is deterministic: encoder + decoder, no probability, nothing to sample from; fitted by minimising reconstruction error." },
+            { "id": "p4.11", "front": "Linear AE trained by gradient descent vs pPCA?", "back": "Same subspace. AE: network trained by backprop on minibatches, no closed forms (so parts can be made nonlinear), but no p(y). Its loss has no priors so the scale of W is free and it projects exactly, where pPCA shrinks slightly." },
+            { "id": "p4.12", "front": "Why can't you just add a penalty on ‖Z‖² to the AE and retrain?", "back": "Rescale W_enc → W_enc/c and W → cW: reconstruction unchanged but the penalty ‖Z‖²→0 as c→∞ while W grows. No minimum exists (only an infimum). Fix: also add weight decay on W (the prior on W)." },
+            { "id": "p4.13", "front": "Classical PCA vs pPCA: what's the difference?", "back": "Classical PCA (eigenvectors/SVD) returns an ordered set of orthogonal directions: 1st maximises variance, then remove what it explains and repeat on residuals. pPCA gives only the subspace (orientation arbitrary), plus the noise σ²." },
+            { "id": "p4.14", "front": "Why is pPCA/AE blind to rotations?", "back": "Rotate Z by orthogonal R and W by R⁻¹: ZW is unchanged. So 'first' and 'second' component aren't meaningful. An SVD post-processing step on Ŵ recovers the ordered axes." },
+            { "id": "p4.15", "front": "pPCA/AE give 'the sheet'; classical PCA gives almost the same sheet plus axes. Why 'almost'?", "back": "The subspace spanned is the same (pPCA's ML solution spans the top principal components), but pPCA's priors/noise model shrink the reconstructions slightly toward the origin (PCA and the unpenalised AE project exactly). So reconstructions differ a little even though the sheet matches, and only classical PCA also fixes ordered axes." },
+            { "id": "p4.16", "front": "Can pPCA or an AE enforce PCA's ordering?", "back": "Yes, but not automatically: you must explicitly enforce it (e.g. fit direction by direction on residuals, or post-process with SVD)." },
+            { "id": "p4.17", "front": "Generating from pPCA?", "back": "Walk along a direction in code space (e.g. −2σ to +2σ) and decode. Points are mostly codes never assigned to a training face, so outputs are generated, not reconstructed." },
+            { "id": "p4.18", "front": "pPCA vs NN autoencoder comparison summary?", "back": "NN finds the same subspace/reconstructions, but has no closed form and can use nonlinear pieces. Loses p(y), probabilities and uncertainty." }
+          ]
+        },
+        {
+          "id": "gm1",
+          "name": "GMMs, Naive Bayes & k-means",
+          "cards": [
+            { "id": "gm1.1", "front": "Generative story of a Gaussian mixture model (GMM)?", "back": "1) Roll a (possibly loaded) K-sided die → component k (prior π_k). 2) Draw x from N(m_k, Σ_k). 3) Record both. Gives labelled data (xₙ, cₙ)." },
+            { "id": "gm1.2", "front": "Fitting a GMM with complete (labelled) data?", "back": "Partition by class: π̂_k = N_k/N; m̂_k = mean of class-k points; Σ̂_k = covariance of class-k points (empirical estimates, also the ML solution)." },
+            { "id": "gm1.3", "front": "One-hot responsibilities r_nk?", "back": "r_nk = how much point n belongs to class k. For labelled data it's 1 or 0 and each row sums to 1. Then N_k = Σₙr_nk, m̂_k = (1/N_k)Σₙr_nk xₙ, Σ̂_k = (1/N_k)Σₙr_nk(xₙ−m̂_k)(xₙ−m̂_k)ᵀ." },
+            { "id": "gm1.4", "front": "GMM as a classifier?", "back": "Generative: models p(x,c) = p(x|c)p(c) and inverts via Bayes: p(c=k|x) = π_k N(x|m_k,Σ_k) / Σ_k' π_k' N(x|m_k',Σ_k')." },
+            { "id": "gm1.5", "front": "Generative vs discriminative classifiers?", "back": "Generative (c → x): model p(x,c), then invert (Naive Bayes, GMM). Can sample, handle missing data. Discriminative (x → c): model p(c|x) directly (logistic regression, NNs). Doesn't waste effort on p(x) and often classifies better." },
+            { "id": "gm1.6", "front": "Derive: 2-class GMM with shared isotropic covariance gives a sigmoid.", "back": "log[p(c=1|x)/p(c=0|x)] = log N(x|m₁,σ²I) − log N(x|m₀,σ²I) + log(π₁/π₀). Expand ‖x−m‖²: the xᵀx term is identical for both classes and cancels. Left with wᵀx + b, w = (m₁−m₀)/σ². So p(c=1|x) = σ(wᵀx + b)." },
+            { "id": "gm1.7", "front": "What is LDA (linear discriminant analysis) here?", "back": "A GMM with shared covariance: the generative model reproduces logistic regression's form, with a hyperplane decision boundary. (Not Latent Dirichlet Allocation.)" },
+            { "id": "gm1.8", "front": "What if class covariances differ?", "back": "The quadratic terms no longer cancel, giving parabolic (quadratic) decision boundaries." },
+            { "id": "gm1.9", "front": "K > 2 classes with equal priors and shared isotropic covariance?", "back": "Pairwise boundaries are hyperplanes; hard classification gives piecewise-linear regions: the Voronoi diagram of the class means." },
+            { "id": "gm1.10", "front": "k-means algorithm?", "back": "Repeat until nothing moves: (1) assign each point to its nearest centroid (centroid is 'responsible'); (2) move each centroid to the mean of its assigned points." },
+            { "id": "gm1.11", "front": "Unsupervised GMM: what changes?", "back": "Labels cₙ are latent. Beliefs replace facts: r_nk ∈ [0,1] (soft assignments, rows sum to 1). M-step is the same weighted ML update using r as weights." },
+            { "id": "gm1.12", "front": "EM for a GMM?", "back": "1) Initialise m_k, Σ_k, π_k. 2) E-step: r_nk = π_k N(xₙ|m_k,Σ_k)/Σ_j π_j N(xₙ|m_j,Σ_j). 3) M-step: N_k = Σₙr_nk, π_k = N_k/N, m_k, Σ_k from r-weighted data. 4) Repeat to convergence." },
+            { "id": "gm1.13", "front": "Responsibility vs posterior ratio?", "back": "Responsibility r_nk = p(k|xₙ) during fitting. Posterior ratio p(c=1|x)/p(c=0|x) is the same kind of object, but with all parameters already known (no fitting)." },
+            { "id": "gm1.14", "front": "k-means as a limit of EM for GMM?", "back": "Shrink σ² → 0 (shared isotropic): responsibilities become one-hot (hard) so E-step = assign to nearest mean, M-step = recompute means. What's lost is the posterior's width." },
+            { "id": "gm1.15", "front": "Can EM get stuck / what if two centres coincide?", "back": "EM is monotone but only finds local optima (depends on initialisation). Two components drifting together become redundant/degenerate (also, a Gaussian collapsing onto one point gives infinite likelihood)." },
+            { "id": "gm1.16", "front": "Kernel density estimation (KDE) vs GMM vs k-means?", "back": "KDE: one Gaussian per datapoint (K=N), shared isotropic σ² (bandwidth), nothing fitted. Table: centres=data & crisp = empirical distribution; centres=data & soft = KDE; fixed K & crisp = k-means; fixed K & soft = GMM." },
+            { "id": "gm1.17", "front": "DP-means (non-examinable)?", "back": "Like k-means but creates a new centre when a point's squared distance to the nearest centre exceeds λ. λ is the price of a new cluster. Nonparametric (Dirichlet process)." },
+            { "id": "gm1.18", "front": "Table of models by discrete/continuous c and x?", "back": "Discrete c, discrete x: Naive Bayes / mixture of categoricals. Discrete c, continuous x: LDA / GMM / discrete VAE. Continuous z, discrete x: VAE with Bernoulli decoder. Continuous z, continuous x: Bayesian linear regression / pPCA / VAE." }
+          ]
+        },
+        {
+          "id": "e1",
+          "name": "ELBO & Why EM Works",
+          "cards": [
+            { "id": "e1.1", "front": "Parameters θ vs latent variables z?", "back": "θ: fixed parameters, fitted (written as a subscript, e.g. p_θ). z: one per datapoint, inferred (inside the brackets). Joint: p_θ(x,z) = p_θ(z)p_θ(x|z)." },
+            { "id": "e1.2", "front": "What is the evidence?", "back": "log p_θ(x): the log-likelihood of the data under a latent-variable model. Needs the integral ∫p_θ(x,z)dz, usually intractable." },
+            { "id": "e1.3", "front": "Evidence = ELBO + KL: state and derive.", "back": "For any q(z): log p_θ(x) = ∫q log[p_θ(x,z)/q(z)]dz + ∫q log[q(z)/p_θ(z|x)]dz = ELBO + KL[q‖p_θ(z|x)]. Derive: multiply log p(x) by ∫q=1, write p(x) = p(x,z)/p(z|x), multiply and divide by q(z) inside the log, split." },
+            { "id": "e1.4", "front": "What is the ELBO and why a lower bound?", "back": "ELBO = E_q[log p_θ(x,z) − log q(z)]. Since KL ≥ 0, ELBO ≤ log p_θ(x). Tight when q(z) = p_θ(z|x). Computable as an expectation under a q we chose." },
+            { "id": "e1.5", "front": "Why does the EM algorithm work?", "back": "Evidence = ELBO + KL. E-step: hold θ, set q = p_θ(z|x) ⇒ KL = 0, bound tight (ELBO = evidence). M-step: hold q, raise ELBO w.r.t. θ (this raises the evidence at least as much since KL ≥ 0 afterwards). So the log-likelihood never decreases." },
+            { "id": "e1.6", "front": "What does the EM M-step optimise?", "back": "The ELBO splits into E_q[log p_θ(x,z)] + H(q); only the first term depends on θ. So the M-step maximises the expected complete-data log-likelihood." },
+            { "id": "e1.7", "front": "EM monotonicity in practice?", "back": "log p_θ(X) rises each iteration: a huge first jump from a bad start, then diminishing but still strictly positive gains (to a local optimum)." },
+            { "id": "e1.8", "front": "EM for GMM vs pPCA in ELBO terms?", "back": "GMM: q(z)=r_nk is the exact posterior, so the ELBO is tight after each E-step. pPCA as run: only the posterior mean is kept (q is a point), so the bound isn't tight and it climbs the joint posterior." },
+            { "id": "e1.9", "front": "Fisher's identity?", "back": "∇_θ log p_θ(x) = E_{p_θ(z|x)}[∇_θ log p_θ(x,z)]. The evidence gradient is the posterior-weighted gradient of the complete-data log-likelihood." },
+            { "id": "e1.10", "front": "Derive Fisher's identity.", "back": "∇log p(x) = ∇p(x)/p(x) = (1/p(x))∫∇p(x,z)dz = (1/p(x))∫p(x,z)∇log p(x,z)dz = ∫p(z|x)∇log p(x,z)dz. (chain rule for log, sum rule, swap ∇ and ∫, product rule.)" },
+            { "id": "e1.11", "front": "What does Fisher's identity mean for gradient descent vs EM?", "back": "A gradient step already contains an exact E-step (the posterior weighting arises from differentiation). So EM and gradient ascent climb the same hill; gradient descent doesn't skip the E-step, it does it implicitly." },
+            { "id": "e1.12", "front": "Two learning styles: alternate vs just descend?", "back": "Alternate: infer codes, refit model, repeat (EM). Just descend: one objective, gradients on everything at once (autoencoders). With Fisher's identity both climb the same likelihood." }
+          ]
+        },
+        {
+          "id": "v1",
+          "name": "Variational Autoencoders (VAE)",
+          "cards": [
+            { "id": "v1.1", "front": "Why is a deep-decoder latent model hard to train directly?", "back": "log p_θ(x) = log∫p_θ(x|z)p(z)dz is intractable for a neural-net decoder, and the posterior p_θ(z|x) has no closed form." },
+            { "id": "v1.2", "front": "Variational inference (VI)?", "back": "Restrict q to a tractable family Q and find the best approximation by maximising the ELBO: argmin KL[q‖p(z|x)] ⇔ argmax ELBO. Compared to EM (exact E-step) and MCMC (exact samples, slow), VI is approximate but fast." },
+            { "id": "v1.3", "front": "What is amortisation?", "back": "A single encoder network q_φ(z|x) with shared parameters φ gives an approximate posterior for every x, instead of solving a fresh inference problem for each x. A separate choice from VI itself." },
+            { "id": "v1.4", "front": "VAE ELBO: two terms?", "back": "ELBO = E_{q_φ(z|x)}[log p_θ(x|z)] − KL[q_φ(z|x)‖p(z)]. Reconstruction term (an autoencoder loss) minus a KL regulariser toward the prior N(0,I)." },
+            { "id": "v1.5", "front": "Derive the VAE ELBO form.", "back": "E_q[log p(x|z) + log p(z) − log q(z|x)] (log of a product/quotient) = E_q[log p(x|z)] − E_q[log q/p(z)] (linearity) = reconstruction − KL (that ratio inside E_q is the KL by definition)." },
+            { "id": "v1.6", "front": "Role of the KL term / what if you drop it?", "back": "Pushes encodings toward the prior, keeping the latent space smooth and well-organised (closed form for diagonal Gaussians). Dropping it gives a plain autoencoder: codes scatter, with holes, so sampling from the prior won't decode to plausible data." },
+            { "id": "v1.7", "front": "VAE architecture?", "back": "Encoder outputs μ_z and Σ_z (diagonal); sample z ~ N(μ_z, Σ_z); decoder maps z → x̂. Loss = −ELBO. Σ is diagonal because positivity is easy (e.g. exp of a log-variance output) vs enforcing positive-definiteness." },
+            { "id": "v1.8", "front": "Reparameterisation trick: problem and fix?", "back": "Problem: can't backprop through a random sampling step. Fix: z = μ_φ(x) + Σ_φ(x) ⊙ ε, ε ~ N(0,I). z is now a deterministic function of φ (given ε), so ∇_φ flows." },
+            { "id": "v1.9", "front": "What is a linear VAE?", "back": "Linear encoder q(z|x) = N(xW_enc, Σ_enc diag) and linear decoder p(x|z) = N(zW_dec, σ²I): the decoder is exactly pPCA's generative model." },
+            { "id": "v1.10", "front": "Four ways to train linear codes: PCA, linear AE, pPCA, linear VAE?", "back": "PCA: point code, closed form (eigenvectors), subspace + axes. Linear AE: point, gradient descent, subspace only. pPCA: Gaussian, EM, subspace + σ². Linear VAE: Gaussian, SGD on ELBO, subspace + σ² + axes (diagonal q fixes axes)." },
+            { "id": "v1.11", "front": "Why were VAEs a big deal?", "back": "Reparameterisation allows end-to-end SGD through sampling; bridges probabilistic models and deep learning; principled generative view of AEs; smooth structured latent space (interpolate/sample). ELBO-as-objective underpins later generative models (flows, VQ-VAE, latent diffusion)." }
+          ]
+        },
+        {
+          "id": "s1",
+          "name": "Discrete Codes & Softmax Autoencoder",
+          "cards": [
+            { "id": "s1.1", "front": "Likelihood = decoder, posterior = encoder?", "back": "The likelihood p(x|z) maps code → data (decoder). Bayes' rule inverts it to the posterior p(z|x), whose mean/mode, computed as a function of x, is an encoder (got by Bayes, not trained)." },
+            { "id": "s1.2", "front": "Continuous Gaussian prior gives what encoder?", "back": "Posterior mean E[z|x] = ((σ²/σ_z²)I + WWᵀ)⁻¹ W x: a linear layer, i.e. a regularised pseudo-inverse of W." },
+            { "id": "s1.3", "front": "One-of-K prior: what is the model?", "back": "z is one of the K one-hot vectors, each with prior 1/K. Rows of W ∈ ℝ^{K×d} are the means m_k. Decoding is a table lookup (embedding table); x ~ N(m_k, σ²I). Marginal is a GMM with equal weights and shared isotropic σ²." },
+            { "id": "s1.4", "front": "Derive: the posterior of a one-of-K code is a softmax.", "back": "p(k|x) ∝ N(x;m_k,σ²I) (flat prior). Expand ‖x−m_k‖² = ‖x‖² − 2m_kᵀx + ‖m_k‖². The ‖x‖² term is the same for all k, so cancels. Left: r_k(x) = softmax_k(a(x)/σ²), a_k = m_kᵀx − ½‖m_k‖²." },
+            { "id": "s1.5", "front": "What two assumptions make ‖x‖² cancel?", "back": "Components are isotropic and share one σ². (Equivalent to softmax shift-invariance: adding a constant to all logits changes nothing.)" },
+            { "id": "s1.6", "front": "Softmax encoder as a neural layer?", "back": "Linear map with weight rows m_k, bias b_k = −½‖m_k‖², softmax over K units, logits divided by σ² (temperature). Bigger noise ⇒ higher temperature ⇒ flatter code." },
+            { "id": "s1.7", "front": "Softmax autoencoder reconstruction?", "back": "x̂ = Σ_k r_k(x) m_k = Wᵀr(x): a posterior mean, with tied weights (encoder uses W, decoder Wᵀ). Code = vector of responsibilities." },
+            { "id": "s1.8", "front": "Why must the reconstruction lie in the convex hull of the m_k?", "back": "r_k ≥ 0 and Σr_k = 1, so x̂ is a convex combination of the rows. An input far outside the hull is pulled back inside (onto/near a row or boundary): it can't be reconstructed faithfully." },
+            { "id": "s1.9", "front": "Continuous vs one-of-K code, side by side?", "back": "Prior: Gaussian vs uniform on one-hots. Posterior: Gaussian vs categorical. Code: posterior mean vs whole posterior. Encoder weights: pseudoinverse of W vs W itself + bias. Reconstruction: projection onto a subspace vs point in hull of rows. Marginal p(x): one Gaussian vs mixture of K Gaussians." },
+            { "id": "s1.10", "front": "What does σ² do in the softmax AE?", "back": "Small σ²: responsibilities near one-hot, x̂ ≈ nearest row (hard code, k-means-like). Large σ²: soft codes, modes of p(x) leave the rows and neighbouring ones merge into blends; at very large σ² a single mode remains." },
+            { "id": "s1.11", "front": "Three ways to fit W in the softmax AE?", "back": "1) EM (GMM, closed-form batch, monotone). 2) Gradient ascent on log p(x) (marginal in closed form; update m_k ← m_k + η r_k(x)(x − m_k)). 3) Gradient descent on reconstruction ‖x − x̂‖². The first two optimise the same objective; the third a different one." },
+            { "id": "s1.12", "front": "Reconstruction error vs likelihood: why different optima?", "back": "Reconstruction error has no noise term, so it fits a noiseless model to noisy data. Since x̂ lies in the hull, minimising squared error drags the rows outward (more so as σ grows) to compensate, whereas max likelihood has σ² absorb the scatter." },
+            { "id": "s1.13", "front": "Generative model vs autoencoder (table)?", "back": "Generative: prior p(z) + likelihood p(x|z); gives p(x) and a posterior; can sample; fit by max log p(x). Autoencoder: encoder x→z + decoder z→x̂; gives reconstruction; nothing to sample from; fit by min ‖x−x̂‖²." }
+          ]
+        },
+        {
+          "id": "h1",
+          "name": "Associative Memory & Hopfield",
+          "cards": [
+            { "id": "h1.1", "front": "Associative (content-addressable) memory?", "back": "Store patterns {m_k}; given a noisy/partial query x, return the stored pattern it most resembles. Address by content, like a fragment of a tune retrieving the whole tune." },
+            { "id": "h1.2", "front": "Classic Hopfield network?", "back": "Binary polar patterns xᵢ ∈ {−1,+1}ᵈ, single weight matrix J with Hebb's rule ΔJ_ij = xᵢxⱼ. Retrieval: update neurons as perceptrons (sign of weighted input). Each update never increases an energy E(ξ); stored patterns are local minima (attractors)." },
+            { "id": "h1.3", "front": "Hopfield capacity?", "back": "About 0.14·d patterns for d neurons (linear in d, small constant). Also has false 'fictitious' memories (spurious minima)." },
+            { "id": "h1.4", "front": "Iterating the softmax AE map?", "back": "T(x) = x̂ = Wᵀr(x). Repeated application x → T(x) → … converges to modes of p(x), which sit at (or near) stored rows. A corrupted row walks to its clean original with no denoising training. Retrieval = mode-finding." },
+            { "id": "h1.5", "front": "Tweedie's formula (for the GMM)?", "back": "x̂ = x + σ²∇ₓ log p(x). Because ∇ₓ log p(x) = Σ r_k (m_k − x)/σ² = (x̂ − x)/σ². Each application of the map is a gradient-ascent step of size σ² on log p." },
+            { "id": "h1.6", "front": "Why does the iteration converge and stop?", "back": "It is gradient ascent on log p, and stops exactly where x̂ = x (gradient zero), i.e. at a mode." },
+            { "id": "h1.7", "front": "Energy function of the modern Hopfield network?", "back": "E(x) = −log p(x) = ‖x‖²/(2σ²) − LSE(a(x)/σ²). Then x̂ = x − σ²∇E(x): descending energy = climbing density. LSE's gradient is a softmax, so the pull is competitive, giving much higher capacity than the quadratic 1982 energy." },
+            { "id": "h1.8", "front": "Effect of σ² on recall?", "back": "Small σ²: every stored item is its own fixed point (lookup table; only returns what it was given). Larger σ²: nearby items merge into blends never stored: spurious memories (bad) or generalisation/composition (good)." },
+            { "id": "h1.9", "front": "Faces memory demo findings?", "back": "219 stored faces. Small σ²: 218 fixed points. By σ²≈6: 2 broad prototypes absorb almost all faces. From pure noise at large σ²: converge to the same blend (~average face); at small σ² to a stored face." },
+            { "id": "h1.10", "front": "Annealing σ² downward from noise?", "back": "Start large and shrink σ² each step: blend sharpens and commits to one face, but the start is forgotten, so deterministic (same face every time). Adding fresh noise each step gives different faces per run; still only samples the training set (no new faces)." },
+            { "id": "h1.11", "front": "What if the decoder ≠ encoderᵀ?", "back": "No single energy is being climbed. Output stays in the convex hull so it's bounded, but behaviour is open. E.g. decoder rows shifted by one gives cycles m₁→m₂→…→m_K→m₁: a sequence memory (pattern-completion becomes sequence-completion)." }
+          ]
+        },
+        {
+          "id": "d1",
+          "name": "Denoising, Scores & Diffusion",
+          "cards": [
+            { "id": "d1.1", "front": "What is the score?", "back": "∇ₓ log p(x): a vector field (same shape as x) pointing uphill on log p. Not a number or 'scoring'. Distinct from Fisher score ∇_θ log p." },
+            { "id": "d1.2", "front": "Why doesn't the score need the normalising constant?", "back": "p = p̃/Z ⇒ log p = log p̃ − log Z, and log Z is constant in x, so ∇ₓ log p = ∇ₓ log p̃. Matters for associative memory: recall only needs the unnormalised density." },
+            { "id": "d1.3", "front": "Score of one Gaussian blob?", "back": "∇ₓ log N(x; m, σ²I) = (m − x)/σ²: the 'arrow home'. A step of σ² times it lands exactly on m (only true for a single Gaussian)." },
+            { "id": "d1.4", "front": "Derive Tweedie for a mixture (3 steps).", "back": "1) Shift invariance of softmax ⇒ r_k = softmax(a/σ²). 2) Fisher's identity: ∇log p(x) = Σ_k p(k|x)∇log p(x,k) = Σ r_k(m_k − x)/σ². 3) Multiply by σ²: σ²∇log p = Σr_km_k − x = x̂ − x ⇒ x̂ = x + σ²∇log p_σ(x)." },
+            { "id": "d1.5", "front": "Why can't we just use Tweedie directly for large datasets?", "back": "r_k(x) compares x with every training item: you must hold the whole dataset in memory and use all of it each step." },
+            { "id": "d1.6", "front": "Why does MSE training give the posterior mean?", "back": "Target is m_k with probability r_k(x). Loss Σr_k‖m_k − D(x)‖²; gradient −2Σr_k(m_k − D) = 0 ⇒ D(x) = Σr_k m_k = x̂ (since Σr_k=1). Absolute error would give the median instead." },
+            { "id": "d1.7", "front": "Denoising score matching: the idea?", "back": "Train a net D_θ to predict the clean x₀ from x = x₀ + σε with MSE. Optimum = posterior mean x̂, so score ≈ (D_θ(x) − x)/σ². Ordinary regression on (noisy, clean) pairs recovers the score without evaluating any density. Basis of diffusion." },
+            { "id": "d1.8", "front": "Posterior mean vs displacement vs score?", "back": "Posterior mean x̂ = Σr_km_k (a point; what the net outputs). Displacement Δx = x̂ − x (the arrow). Score = Δx/σ² (differs by a factor σ²). 'Network computes the score' is shorthand." },
+            { "id": "d1.9", "front": "Three ways to wire the denoiser?", "back": "Predict the clean point x̂; predict the residual Δx (output = σ²·score, with skip connection); predict the noise ε̂ (score = −ε̂/σ). Same function essentially; diffusion implementations usually predict the noise." },
+            { "id": "d1.10", "front": "Why can't the exact minimiser generate new data?", "back": "On a finite training set the exact denoiser's x̂ returns the nearest training item as σ → 0, so reverse diffusion just reproduces the training set. Trained networks generalise because they fall short of the exact minimiser (their inductive bias smooths between items). Open question; no general account." },
+            { "id": "d1.11", "front": "Towards diffusion: key design points?", "back": "One network D_θ(x̃, σ) denoises at every noise level, with σ as an explicit input (sinusoidal embeddings) since the score field changes shape with σ. Normalise inputs by 1/√(1+σ²) (exact). Loop it with σ annealed from large to small." },
+            { "id": "d1.12", "front": "Why re-add noise at each step of the sampler?", "back": "Each denoiser expects inputs of 'clean + σ-noise'; the reconstruction x̂₀ isn't like that. Re-noising puts the next input back in distribution. Using the network's own noise estimate instead of fresh noise gives deterministic DDIM." },
+            { "id": "d1.13", "front": "Faces: exact vs learned denoiser result?", "back": "Learned MLP (5.5M params, 40k Adam steps) ends on a stored face 72/100 runs (55 distinct faces); mostly returns training faces. New faces would likely need far more data." }
+          ]
+        },
+        {
+          "id": "t1",
+          "name": "Big Ideas & Motivations",
+          "cards": [
+            { "id": "t1.1", "front": "Predictive coding idea?", "back": "Representations exist because they help a system predict its sensory input. Top-down prediction vs bottom-up input; the prediction error drives perception, run as error-correction loops. 'Predict' = reconstruct current input OR forecast future input." },
+            { "id": "t1.2", "front": "Two ways to judge a representation?", "back": "Does it predict (reconstruct/forecast/solve task well; can be dense and inscrutable)? Does it have interpretable structure (sparse, meaningful units: the Barlow/efficient-coding tradition)? Not fundamentally separate: a code capturing real independent causes generalises better." },
+            { "id": "t1.3", "front": "Barlow's efficient coding hypothesis?", "back": "Sensory systems reduce redundancy to represent the world efficiently. Modern interpretability (sparse autoencoders, probes, steering) partly tries to recover this structure from predictively trained networks." },
+            { "id": "t1.4", "front": "Distributed vs one-hot-ish representations?", "back": "Distributed: many units participate, information lives in the pattern of weights (Willshaw's associative memory). One-hot-ish: individual units mean something (cf. 'grandmother cell')." },
+            { "id": "t1.5", "front": "Idea 1: max likelihood = ?", "back": "Minimising KL to the empirical distribution; the loss was always a cross-entropy." },
+            { "id": "t1.6", "front": "Idea 2: priors are ?", "back": "Penalties. A Gaussian prior on weights is a squared penalty; weight decay is a prior." },
+            { "id": "t1.7", "front": "Idea 3: likelihood and posterior?", "back": "A likelihood is a decoder; its posterior is an encoder, got by Bayes' rule, not trained." },
+            { "id": "t1.8", "front": "Idea 4: generative → discriminative?", "back": "A shared-covariance mixture has a softmax posterior, linear in x: the generative model reproduces the discriminative one." },
+            { "id": "t1.9", "front": "Idea 5: hard codes?", "back": "Narrow the Gaussians (σ² → 0) and responsibilities go one-hot. k-means is the zero-noise limit; what's lost is the posterior's width." },
+            { "id": "t1.10", "front": "Idea 6: pPCA is a ?", "back": "Penalised autoencoder: reconstruction error + one penalty per prior (λ_z, λ_w from the prior variances)." },
+            { "id": "t1.11", "front": "Ideas 7–9 (ELBO, EM, gradient)?", "back": "7: log p = ELBO + KL, bound tight iff q = posterior. 8: EM climbs it (E closes the gap, M raises the bound). 9: Fisher's identity: a gradient step contains an exact E-step, so EM and gradient ascent climb the same hill." },
+            { "id": "t1.12", "front": "Ideas 10–12 (VI, amortise, sampling)?", "back": "10: when the posterior is out of reach, pick a family for q and optimise the bound. 11: amortising q into one network is a second, separate choice. 12: gradients can't pass through a sample ⇒ reparameterisation." },
+            { "id": "t1.13", "front": "Ideas 13–16?", "back": "13: the objective determines what's pinned down (pPCA: subspace + σ²; linear VAE adds axes). 14: each softmax-AE piece follows from an assumption (one-of-K ⇒ softmax; Gaussian noise ⇒ bias and 1/σ²; Bayes ⇒ tied weights). 15: reconstruction = posterior mean (stays in convex hull). 16: reconstruction error ≠ likelihood (fits a noiseless model; pushes rows outward)." },
+            { "id": "t1.14", "front": "Ideas 17–21?", "back": "17: iterating the map = gradient ascent on log p; energy = −log p. 18: σ² decides lookup vs blends. 19: squared error learns the conditional mean. 20: with Gaussian noise that mean gives the score, so regression on noisy/clean pairs recovers it. 21: the exact minimiser memorises; the shortfall of trained nets lets them generalise." },
+            { "id": "t1.15", "front": "Theme: starting with the decoder; three ways to get the encoder?", "back": "1) Bayes provides it in closed form, nothing trained (pPCA, GMM, softmax AE; tool: EM). 2) Bayes unavailable, so train an approximate second network q (VAE; tool: ELBO). 3) Do without a code at all: one network learns the score (denoising; tool: score matching)." },
+            { "id": "t1.16", "front": "Two kinds of code in the course?", "back": "Continuous Gaussian code (pPCA, linear AE, VAE): density describes a 'trend' (linear or curved). One-of-M code (GMM, softmax AE, associative memory): density describes 'blobs'. A trained denoiser commits to neither." },
+            { "id": "t1.17", "front": "Practice: What happens to GMM responsibilities as σ² → 0 (shared isotropic)? E and M steps?", "back": "Responsibilities become hard one-hot (nearest mean wins). E-step = assign each point to its nearest mean; M-step = set each mean to the average of its assigned points. That is k-means." },
+            { "id": "t1.18", "front": "Practice: write λ for MAP linear regression with noise σ² and prior w ~ N(0, σ_w²I).", "back": "λ = σ²/σ_w² (minimise ‖y − Xw‖² + λ‖w‖²)." },
+            { "id": "t1.19", "front": "Practice: squared error with two targets (input itself vs clean item): what does each optimum compute?", "back": "Target = input (fitting softmax AE to noisy data): drags rows outward; fits a noiseless model; does not recover the clean items. Target = clean item (denoiser): optimum = posterior mean E[clean|noisy] = x̂ (via Tweedie, the score), which recovers the clean items. Only the second does." }
+          ]
+        }
+      ]
     }
   ]
 }
